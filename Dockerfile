@@ -6,6 +6,7 @@ ADD certs.sh /config/init/certs.sh
 ADD logstash.conf /etc/logstash.conf
 
 ENV ELASTICSEARCH_IP 127.0.0.1
+ENV ETCD_IP 127.0.0.1
 
 RUN yum update -y && \
 yum install -y tar java-1.7.0-openjdk openssl && \

@@ -5,7 +5,7 @@ This docker image is configured to send data to Elasticsearch. (By Default logst
 
 ###Starting Logstash 
 
-`docker run -d --name logstash -e ELASTICSEARCH_IP=elasticsearch_ip -p 5000:5000 million12/logstash`
+`docker run -d --name logstash -e ELASTICSEARCH_IP=elasticsearch_ip -e ETCD_IP=etcd_ip -p 5000:5000 million12/logstash`
 ### Certificates 
 Certificates will be created on first run and will be kept in /opt/logstash/ssl directory. To get them out copy them using those commands:
 
@@ -26,6 +26,8 @@ Certificated are populated into etcd using those keys:
 >   fwdkey
 
 >   fwdcrt
+
+Remember to provide ETCD IP for accessing the populated keys. (Default is 127.0.0.1)
 
 ### Logstash Forwarder
 For pushing your logs into Logstash make sure you have copied certificated to your logged machine and set up logstash-forwarder accourdigly to it's manual. <a href="https://github.com/elasticsearch/logstash-forwarder">LINK</a>
