@@ -11,7 +11,10 @@ if [ ! -f /opt/logstash/ssl/logstash-forwarder.crt ] ; then
     openssl req -x509 -batch -nodes -days 3650 -newkey rsa:2048 -keyout logstash-forwarder.key -out logstash-forwarder.crt
 fi
 
+
+# Commenting this out... not sure where/how etcd is supposed to be installed
+
 # -  populate certificated through etcd
 
-curl -L -X PUT http://$ELASTICSEARCH_IP:4001/v2/keys/fwdkey --data-urlencode value@/opt/logstash/ssl/logstash-forwarder.key
-curl -L -X PUT http://$ELASTICSEARCH_IP:4001/v2/keys/fwdcrt --data-urlencode value@/opt/logstash/ssl/logstash-forwarder.crt
+# curl -L -X PUT http://$ELASTICSEARCH_IP:4001/v2/keys/fwdkey --data-urlencode value@/opt/logstash/ssl/logstash-forwarder.key
+# curl -L -X PUT http://$ELASTICSEARCH_IP:4001/v2/keys/fwdcrt --data-urlencode value@/opt/logstash/ssl/logstash-forwarder.crt
