@@ -7,14 +7,12 @@ ADD logstash.conf /etc/logstash.d/logstash.conf
 
 ENV ELASTICSEARCH_IP 127.0.0.1
 
+ENV LOGSTASH_VERSION 1.5.0.beta1
+
 RUN yum update -y && \
   yum install -y tar java-1.7.0-openjdk openssl && \
   yum clean all && \
-
-ENV LOGSTASH_VERSION 1.5.0.beta1
-
-# - Logstash Installation
-RUN mkdir -p /opt/logstash/ssl && \
+  mkdir -p /opt/logstash/ssl && \
   cd /opt/logstash && \
   curl -O https://download.elasticsearch.org/logstash/logstash/logstash-$LOGSTASH_VERSION.tar.gz && \
   tar zxvf logstash-$LOGSTASH_VERSION.tar.gz -C /opt/logstash --strip-components=1 && \
