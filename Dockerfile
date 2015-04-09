@@ -12,6 +12,7 @@ ENV LOGSTASH_VERSION 1.5.0.rc2
 RUN yum update -y && \
   yum install -y tar java-1.7.0-openjdk openssl && \
   yum clean all && \
+  mkdir -p /var/log/logstash && \
   mkdir -p /opt/logstash/ssl && \
   cd /opt/logstash && \
   curl -O https://download.elasticsearch.org/logstash/logstash/logstash-$LOGSTASH_VERSION.tar.gz && \
